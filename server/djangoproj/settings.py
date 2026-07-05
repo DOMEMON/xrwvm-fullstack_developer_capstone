@@ -28,7 +28,8 @@ SECRET_KEY =\
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Đã chỉnh sửa để mở quyền truy cập cho môi trường Lab
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = []
 
 REST_FRAMEWORK = {
@@ -58,10 +59,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'djangoproj.urls'
 
+# Đã thêm đường dẫn frontend/static vào DIRS
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,5 +136,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = []
-
+# Đã cập nhật thư mục chứa file tĩnh cho giao diện web
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/static')
+]
